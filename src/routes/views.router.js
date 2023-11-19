@@ -17,12 +17,8 @@ router.get("/products", async (req, res) => {
 router.get("/carts/:cid", async (req, res) => {
     const cartData = await cartsIdController(req, res);
 
-    if (cartData.status === "success") {
-        res.render("carts", {
-            style: "index.css",
-            cart: cartData.payload
-        });
-    } else {
-        res.status(500).send("Server error: " + cartData.error);
-    }
+    res.render("carts", {
+        style: "index.css",
+        cart: cartData.payload
+    });
 });

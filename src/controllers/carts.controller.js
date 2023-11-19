@@ -3,15 +3,13 @@ import { productsModel } from "../models/products.model.js"
 
 export const cartsIdController = async (req, res) => {
     try {
-        let cid = req.params.cid
-        let result = await cartsModel.findById({ _id: cid }).populate('products.product')
-        return { status: "success", payload: result }
+        let cid = req.params.cid;
+        let result = await cartsModel.findById({ _id: cid }).populate('products.product');
+        return { status: "success", payload: result };
+    } catch (err) {
+        return { status: "error", error: "Server error " + err };
     }
-    catch (err) {
-        res.status(500).send("Server error " + err)
-    }
-
-}
+};
 
 export const cartsCreateController = async (req, res) => {
     try {
