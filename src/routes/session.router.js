@@ -22,7 +22,7 @@ router.post('/login', passport.authenticate('login', {
     if (!req.user) return res.status(400).send({ status: "error", error: "Incomplete Values" });
 
     req.session.user = {
-        name: req.user.first_name + req.user.last_name,
+        name: req.user.first_name + " " + req.user.last_name,
         age: req.user.age,
         email: req.user.email,
         rol: req.user.rol
@@ -42,6 +42,14 @@ router.post("/logout", (req, res) => {
         }
         res.send("Logout Ok")
     })
+})
+
+router.get("/current", (req, res) => {
+    if (req.user) {
+        res.json({ status: "scuccess", user: req.user })
+    } else {
+        res.json({status: "error", error: "Not logued user"})
+    }
 })
 
 router.post('/restartPassword', async (req, res) => {

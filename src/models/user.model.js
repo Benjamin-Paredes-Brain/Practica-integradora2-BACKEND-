@@ -21,19 +21,20 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     cart: {
-        type: [
-            {
-                cartID: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: "carts"
-                }
+        type: {
+            cartID: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "carts"
             }
-        ],
-        default: []
+        }
     },
     role: {
         type: String,
-        default: true
+        default: "user"
+    },
+    password: {
+        type: String,
+        required: true
     }
 })
 

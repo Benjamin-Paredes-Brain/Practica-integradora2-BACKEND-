@@ -55,7 +55,6 @@ initializedPassport()
 app.use(passport.initialize())
 app.use(passport.session())
 
-
 app.use("/", viewsRouter)
 app.use("/api/products",producstRouter)
 app.use("/api/carts", cartsRouter)

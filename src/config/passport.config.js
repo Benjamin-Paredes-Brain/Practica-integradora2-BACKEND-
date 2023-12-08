@@ -21,8 +21,6 @@ export const initializedPassport = () => {
                     last_name,
                     email,
                     age,
-                    role,
-                    cart,
                     password: createHash(password)
                 }
                 let result = await userModel.create(newUser);
